@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
-CORE_DIR := $(LOCAL_PATH)/..
+CORE_DIR := $(LOCAL_PATH)/../..
 
-INCFLAGS    :=
+INCFLAGS    := 
 COMMONFLAGS :=
 
 WITH_DYNAREC :=
@@ -22,7 +22,7 @@ else ifeq ($(TARGET_ARCH_ABI), mips64)
   WITH_DYNAREC := mips64 # doesn't exist
 endif
 
-include $(CORE_DIR)/Makefile.common
+include $(CORE_DIR)/libretro/Makefile.common
 
 COMMONFLAGS += -D__LIBRETRO__ -DFRONTEND_SUPPORTS_RGB565 $(INCFLAGS) -DC_HAVE_MPROTECT="1"
 

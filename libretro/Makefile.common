@@ -59,8 +59,6 @@ SOURCES_CXX := \
 	$(CORE_DIR)/src/hardware/gus.cpp \
 	$(CORE_DIR)/src/hardware/hardware.cpp \
 	$(CORE_DIR)/src/hardware/iohandler.cpp \
-	$(CORE_DIR)/src/hardware/ipx.cpp \
-	$(CORE_DIR)/src/hardware/ipxserver.cpp \
 	$(CORE_DIR)/src/hardware/joystick.cpp \
 	$(CORE_DIR)/src/hardware/keyboard.cpp \
 	$(CORE_DIR)/src/hardware/memory.cpp \
@@ -123,6 +121,12 @@ SOURCES_CXX := \
 	$(CORE_DIR)/src/hardware/mame/saa1099.cpp \
 	$(CORE_DIR)/src/hardware/mame/sn76496.cpp \
 	$(CORE_DIR)/src/hardware/mame/ymf262.cpp \
+
+ifneq ($(platform), wiiu)
+SOURCES_CXX += \
+	$(CORE_DIR)/src/hardware/ipx.cpp \
+	$(CORE_DIR)/src/hardware/ipxserver.cpp
+endif
 
 SOURCES_C := \
 	$(LIBRETRO_COMM_DIR)/libco/libco.c
