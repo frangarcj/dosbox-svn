@@ -3,11 +3,25 @@
 Upstream port of DOSBox to libretro.
 
 ### Keeping up-to-date
-To update from upstream follow this procedure:
+If you plan to work on the core and you plan to update from upstream follow this procedure:
+Clone the repo from the svn upstream:
 
 ```bash
+git svn clone svn://svn.code.sf.net/p/dosbox/code-0/dosbox/ dosbox-svn
+```
+
+This takes a few hours. Then add a remote for your fork of my repo:
+
+```bash
+cd dosbox-svn
+git remote add origin https://github.com/fr500/dosbox-svn.git
 git checkout master
 git svn rebase
+```
+
+Then switch to libretro branch and work there instead
+
+```
 git checkout libretro
 git rebase master
 ```
