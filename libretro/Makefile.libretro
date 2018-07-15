@@ -1,6 +1,6 @@
 DEBUG=0
 GIT_VERSION := " $(shell git rev-parse --short HEAD)"
-SVN_VERSION := " $(shell timeout 10 git svn log --limit 1 | grep "|" | cut --fields=1 --delimiter=" ")"
+SVN_VERSION := " $(shell cat svn)"
 
 UNAME=$(shell uname -a)
 
@@ -190,9 +190,9 @@ else ifeq ($(platform), wiiu)
 	CC = $(DEVKITPPC)/bin/powerpc-eabi-gcc$(EXE_EXT)
 	CXX = $(DEVKITPPC)/bin/powerpc-eabi-g++$(EXE_EXT)
 	AR = $(DEVKITPPC)/bin/powerpc-eabi-ar$(EXE_EXT)
-	COMMONFLAGS += -DGEKKO -DWIIU -DHW_RVL -mwup -mcpu=750 -meabi -mhard-float -D__POWERPC__ -D__ppc__ -DMSB_FIRST -DWORDS_BIGENDIAN=1 -I./SDL/
+	COMMONFLAGS += -DGEKKO -DWIIU -DHW_RVL -mwup -mcpu=750 -meabi -mhard-float -D__POWERPC__ -D__ppc__ -DMSB_FIRST -DWORDS_BIGENDIAN=1 -I./deps/include/
 	COMMONFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
-	BAKE_SDL = 1
+	WITH_EMBEDDED_SDL = 1
 	STATIC_LINKING = 1
 	WITH_DYNAREC =
 
@@ -200,7 +200,7 @@ else ifeq ($(platform), emscripten)
 	TARGET := $(TARGET_NAME)_libretro_$(platform).bc
 	STATIC_LINKING = 1
 	COMMONFLAGS += -DEMSCRIPTEN
-	BAKE_SDL = 1
+	WITH_EMBEDDED_SDL = 1
 else
 	COMMONFLAGS += -mno-ms-bitfields
 	WITH_IPX := 1

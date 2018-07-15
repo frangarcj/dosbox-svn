@@ -122,7 +122,7 @@ SOURCES_CXX := \
 	$(CORE_DIR)/src/hardware/mame/sn76496.cpp \
 	$(CORE_DIR)/src/hardware/mame/ymf262.cpp \
 
-ifeq ($(BAKE_SDL), 1)
+ifeq ($(WITH_EMBEDDED_SDL), 1)
 SOURCES_C += \
 		$(CORE_DIR)/libretro/deps/SDL/src/thread/generic/SDL_syscond.c \
 		$(CORE_DIR)/libretro/deps/SDL/src/thread/generic/SDL_sysmutex.c \

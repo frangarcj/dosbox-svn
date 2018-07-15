@@ -610,7 +610,7 @@ void retro_get_system_info(struct retro_system_info *info)
 #if defined(GIT_VERSION) && defined(SVN_VERSION)
     info->library_version = CORE_VERSION SVN_VERSION GIT_VERSION;
 #elif defined(GIT_VERSION)
-    info->library_version = CORE_VERSION GIT_VERSION
+    info->library_version = CORE_VERSION GIT_VERSION;
 #else
     info->library_version = CORE_VERSION;
 #endif
